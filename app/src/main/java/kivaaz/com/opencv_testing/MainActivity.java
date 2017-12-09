@@ -2,6 +2,8 @@ package kivaaz.com.opencv_testing;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +13,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     private float                  mRelativeFaceSize   = 0.5f;
     private int                    mAbsoluteFaceSize   = 0;
 
+    Button clorBtn;
     private CameraBridgeViewBase _cameraBridgeViewBase ;
     // Used to load the 'native-lib' library on application startup.
 
@@ -123,9 +128,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{Manifest.permission.CAMERA},
                 1);
@@ -137,7 +144,14 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
-
+        clorBtn = (Button) findViewById(R.id.colorBlobbtn);
+        clorBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(),ColorBlobActivity.class));
+                finish();
+            }
+        });
         _cameraBridgeViewBase = (CameraBridgeViewBase) findViewById(R.id.main_surface);
         _cameraBridgeViewBase.setMaxFrameSize(width,height);
         _cameraBridgeViewBase.setVisibility(View.VISIBLE);

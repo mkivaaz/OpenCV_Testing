@@ -4,25 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kivaaz.com.opencv_testing.MainActivity"
+    tools:context="kivaaz.com.opencv_testing.ColorBlobActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textAlignment="center"/>
-
-    <Button
-        android:id="@+id/colorBlobbtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="COLOR DETECTOR"/>
-
     <org.opencv.android.JavaCameraView
-        android:id="@+id/main_surface"
+        android:id="@+id/colorBlobCamera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/faceDetectBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Face Detector"
+        android:textSize="20sp"/>
 
 </LinearLayout>
