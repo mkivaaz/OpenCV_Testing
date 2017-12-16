@@ -18,7 +18,7 @@
         android:id="@+id/colorBlobbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="COLOR DETECTOR"/>
+        android:text="Image Comparison"/>
 
     <org.opencv.android.JavaCameraView
         android:id="@+id/main_surface"

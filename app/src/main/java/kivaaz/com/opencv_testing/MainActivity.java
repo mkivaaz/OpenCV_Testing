@@ -133,6 +133,8 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+        startActivity(new Intent(getBaseContext(),ImageComparison.class));
+
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{Manifest.permission.CAMERA},
                 1);
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         clorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(),ColorBlobActivity.class));
+                startActivity(new Intent(getBaseContext(),ImageComparison.class));
                 finish();
             }
         });
@@ -207,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             Log.e(TAG, "Detection method is not selected!");
         }
 
-        Log.e(TAG, "Detector " + mDetectorType);
+//        Log.e(TAG, "Detector " + mDetectorType);
 
         Rect[] faceArray = faces.toArray();
         for(int i = 0; i< faceArray.length; i++){
